@@ -36,7 +36,7 @@ jobs:
         id: run_tests
         run: npm run test
       - name: Upload test report
-        if: steps.run_tests.outcome == 'failure' 
+        if: failure() && steps.run_tests.outcome == 'failure'         # failure() fonk u oncesinde fail veren bir adim varsa true döndürür ve koşulun çalışmasını sağlar.
         uses: actions/upload-artifact@v3
         with:
           name: test-report
